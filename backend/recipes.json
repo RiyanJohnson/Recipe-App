@@ -1,0 +1,69 @@
+[
+  {
+    "title": "Omelette",
+    "ingredients": ["egg", "salt", "oil"],
+    "steps": [
+      "Beat the eggs",
+      "Heat oil in a pan",
+      "Cook eggs until done"
+    ],
+    "difficulty": "easy",
+    "cookingTime": 5,
+    "servings": 1,
+    "tags": ["quick", "breakfast"]
+  },
+  {
+    "title": "Pasta",
+    "ingredients": ["pasta", "salt", "water", "tomato sauce"],
+    "steps": [
+      "Boil water",
+      "Cook pasta",
+      "Add sauce"
+    ],
+    "difficulty": "easy",
+    "cookingTime": 15,
+    "servings": 2,
+    "tags": ["italian", "quick"]
+  },
+  {
+    "title": "Chicken Curry",
+    "ingredients": ["chicken", "onion", "tomato", "spices", "oil"],
+    "steps": [
+      "Heat oil",
+      "Cook onions",
+      "Add chicken and spices",
+      "Simmer until cooked"
+    ],
+    "difficulty": "medium",
+    "cookingTime": 40,
+    "servings": 3,
+    "tags": ["indian", "dinner"]
+  },
+  {
+    "title": "Grilled Cheese Sandwich",
+    "ingredients": ["bread", "cheese", "butter"],
+    "steps": [
+      "Butter bread",
+      "Add cheese",
+      "Grill until golden"
+    ],
+    "difficulty": "easy",
+    "cookingTime": 10,
+    "servings": 1,
+    "tags": ["quick", "snack"]
+  },
+  {
+    "title": "Fried Rice",
+    "ingredients": ["rice", "egg", "vegetables", "soy sauce", "oil"],
+    "steps": [
+      "Heat oil",
+      "Add vegetables",
+      "Add rice and soy sauce",
+      "Stir fry"
+    ],
+    "difficulty": "medium",
+    "cookingTime": 20,
+    "servings": 2,
+    "tags": ["asian", "lunch"]
+  }
+]
