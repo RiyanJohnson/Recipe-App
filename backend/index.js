@@ -5,12 +5,14 @@ const port = 8080
 const authRoute = require("./routes/authRoute.js")
 const recipeRoute = require("./routes/recipeRoute.js")
 require("dotenv").config();
+const cors = require("cors");
 
 connectDb();
 
 app.use(express.json())
+app.use(cors());
 
-//test controller
+//test controller bro
 app.get('/test',(req,res)=>{
     res.status(500).json("why you testing your routes bro, do you not know if the server is running");
 })
