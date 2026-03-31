@@ -17,7 +17,12 @@ const UserSchema = mongoose.Schema(
     refreshToken: {
       type: String,
       default: null,
-    }
+    },
+    starredRecipes: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Recipe"
+    }]
   }
 );
 
