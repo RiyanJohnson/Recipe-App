@@ -4,6 +4,8 @@ const connectDb = require("./db/db.js");
 const port = 8080
 const authRoute = require("./routes/authRoute.js")
 const recipeRoute = require("./routes/recipeRoute.js")
+const starRoute = require("./routes/starRoute.js")
+const adminRoute = require("./routes/adminRoute.js")
 require("dotenv").config();
 const cors = require("cors");
 
@@ -18,8 +20,10 @@ app.get('/test',(req,res)=>{
 })
 
 app.use("/auth",authRoute);
-app.use("/recipe",recipeRoute)
+app.use("/recipe",recipeRoute);
+app.use("/star",starRoute);
+app.use("/admin",adminRoute);
 
 app.listen(port,()=>
     console.log(`Server running on http://localhost:8080`)
-)
+);
