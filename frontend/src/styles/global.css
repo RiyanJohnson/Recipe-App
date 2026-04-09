@@ -1,0 +1,559 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Fira+Code:wght@400;600&display=swap');
+
+/* ─── 1. Design Tokens ─── */
+:root {
+  --bg:              #f4eee6;
+  --card-bg:         #ffffff;
+  --navy:            #111827;
+  --orange:          #f97316;
+  --orange-hover:    #ea580c;
+  --orange-light:    rgba(249, 115, 22, 0.12);
+  --text:            #1f2937;
+  --text-muted:      #6b7280;
+  --border:          #d1d5db;
+  --border-focus:    #f97316;
+  --shadow-sm:       0 2px 8px rgba(0,0,0,0.06);
+  --shadow-md:       0 8px 24px rgba(0,0,0,0.10);
+  --shadow-lg:       0 20px 48px rgba(0,0,0,0.14);
+  --radius-sm:       8px;
+  --radius-md:       14px;
+  --radius-lg:       20px;
+  --radius-pill:     9999px;
+  --font-sans:       'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:       'Fira Code', 'Courier New', monospace;
+  --transition:      0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── 2. Reset & Base ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* Override index.css #root constraints */
+#root {
+  width: 100% !important;
+  max-width: 100% !important;
+  border-inline: none !important;
+  text-align: unset !important;
+  display: block !important;
+}
+
+/* ─── 3. Typography ─── */
+h1, h2, h3, h4 {
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: var(--navy);
+  line-height: 1.1;
+}
+
+h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
+h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1rem; }
+
+p { color: var(--text-muted); line-height: 1.7; }
+
+.accent-dot  { color: var(--orange); }
+
+.label-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--orange);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+/* ─── 4. Layout ─── */
+.container-wide {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.page-center {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.grid-auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ─── 5. Navbar ─── */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--navy);
+  padding: 0 2rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+}
+
+.navbar-brand {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 1rem;
+  color: #fff;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar-brand span { color: var(--orange); }
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.nav-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.7);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.nav-btn:hover {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+
+.nav-btn.active {
+  background: var(--orange);
+  color: #fff;
+}
+
+.nav-btn-logout {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.6);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: var(--transition);
+  margin-left: 0.5rem;
+}
+
+.nav-btn-logout:hover {
+  border-color: #ef4444;
+  color: #ef4444;
+  background: rgba(239,68,68,0.08);
+}
+
+/* ─── 6. Cards ─── */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+  border-color: var(--orange);
+}
+
+.card-clickable {
+  cursor: pointer;
+}
+
+.card-stat {
+  background: var(--card-bg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  padding: 1.5rem 1.75rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.card-stat-value {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--orange);
+  line-height: 1;
+  font-family: var(--font-mono);
+}
+
+.card-stat-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+/* ─── 7. Dashboard Feature Cards ─── */
+.feature-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  padding: 2.5rem 2rem;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--orange-light) 0%, transparent 60%);
+  opacity: 0;
+  transition: var(--transition);
+  border-radius: inherit;
+}
+
+.feature-card:hover { 
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+  border-color: var(--orange);
+}
+
+.feature-card:hover::before { opacity: 1; }
+
+.feature-icon {
+  width: 56px;
+  height: 56px;
+  background: var(--orange-light);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+
+.feature-card:hover .feature-icon {
+  background: var(--orange);
+}
+
+.feature-title {
+  font-size: 1.1rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+  margin: 0;
+}
+
+.feature-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.feature-arrow {
+  font-size: 1.2rem;
+  color: var(--orange);
+  margin-top: auto;
+  transition: var(--transition);
+}
+
+.feature-card:hover .feature-arrow { transform: translateX(6px); }
+
+/* ─── 8. Divider with label ─── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.divider-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+
+/* ─── 9. Buttons ─── */
+.btn {
+  padding: 0.75rem 2rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.88rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.btn-orange {
+  background: var(--orange);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(249,115,22,0.35);
+}
+
+.btn-orange:hover:not(:disabled) {
+  background: var(--orange-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(249,115,22,0.45);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--navy);
+  border: 2px solid var(--border);
+}
+
+.btn-outline:hover:not(:disabled) {
+  border-color: var(--navy);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-muted);
+  border: none;
+  padding: 0.5rem 1rem;
+}
+
+.btn-ghost:hover { color: var(--navy); background: rgba(0,0,0,0.04); }
+
+.btn-danger {
+  background: transparent;
+  color: #ef4444;
+  border: 1.5px solid #fca5a5;
+  padding: 0.4rem 1rem;
+  font-size: 0.8rem;
+}
+
+.btn-danger:hover { background: rgba(239,68,68,0.08); border-color: #ef4444; }
+
+/* ─── 10. Forms ─── */
+.form-group {
+  margin-bottom: 1.75rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+.input-field {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--border);
+  padding: 0.75rem 0;
+  font-size: 1rem;
+  font-family: var(--font-sans);
+  color: var(--text);
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+input:focus, .input-field:focus {
+  border-bottom-color: var(--orange);
+}
+
+input::placeholder { color: #9ca3af; }
+
+textarea.input-field {
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  resize: vertical;
+  min-height: 100px;
+}
+
+textarea.input-field:focus { border-color: var(--orange); outline: none; }
+
+/* ─── 11. Tags / Badges ─── */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  background: #f3f4f6;
+  border-radius: var(--radius-pill);
+  padding: 0.2rem 0.75rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.tag-orange {
+  background: var(--orange-light);
+  color: var(--orange);
+  font-weight: 700;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.7rem;
+  border-radius: var(--radius-pill);
+}
+
+.badge-easy   { background: #d1fae5; color: #059669; }
+.badge-medium { background: #fef3c7; color: #d97706; }
+.badge-hard   { background: #fee2e2; color: #dc2626; }
+
+/* ─── 12. Skeleton / Loading ─── */
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #ede8e0 25%, #e5dfd5 50%, #ede8e0 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s infinite linear;
+  border-radius: var(--radius-sm);
+}
+
+/* ─── 13. Alert / Error ─── */
+.alert {
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+
+.alert-error   { background: #fee2e2; color: #b91c1c; border-left: 4px solid #ef4444; }
+.alert-success { background: #d1fae5; color: #065f46; border-left: 4px solid #10b981; }
+.alert-info    { background: var(--orange-light); color: var(--orange-hover); border-left: 4px solid var(--orange); }
+
+/* ─── 14. Page Hero Strip (used by inner pages) ─── */
+.page-hero {
+  background: var(--navy);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.page-hero h1 { color: #fff; }
+.page-hero p  { color: rgba(255,255,255,0.55); margin-top: 0.5rem; }
+
+/* ─── 15. Decorative Stripe ─── */
+.stripe {
+  width: 48px;
+  height: 5px;
+  background: var(--orange);
+  border-radius: 3px;
+  margin-bottom: 1.25rem;
+  display: block;
+}
+
+/* ─── 16. Responsive helpers ─── */
+@media (max-width: 768px) {
+  .grid-3 { grid-template-columns: 1fr; }
+  .grid-2 { grid-template-columns: 1fr; }
+  .container { padding: 2rem 1.25rem; }
+  .navbar { padding: 0 1rem; }
+  .navbar-links .nav-btn-label { display: none; }
+}
+
+@media (max-width: 480px) {
+  .feature-card { padding: 1.75rem 1.25rem; }
+}

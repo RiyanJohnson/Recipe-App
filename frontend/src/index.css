@@ -1,0 +1,18 @@
+/* Reset defaults from Vite template — global.css handles all styling */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  border-inline: none;
+  text-align: unset;
+  display: block;
+  min-height: 100svh;
+}
